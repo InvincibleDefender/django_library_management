@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Dashboard</h1>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Books</h5>
+                    <p class="card-text">Total Books: {{ book_count }}</p>
+                    <a href="{% url 'books' %}" class="btn btn-primary">View All Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Transactions</h5>
+                    <p class="card-text">Total Transactions: {{ transaction_count }}</p>
+                    <a href="{% url 'transactions' %}" class="btn btn-primary">View All Transactions</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add more cards for other sections as needed -->
+    </div>
+</div>
+{% endblock %}

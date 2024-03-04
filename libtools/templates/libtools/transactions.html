@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Transactions List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Transactions List</h1>
+    <div class="text-right mb-3">
+        <a href="{% url 'create-transaction' %}" class="btn btn-primary">Add New Transaction</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Book</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Actions</th> <!-- Add column for actions -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.book }}</td>
+                    <td>{{ transaction.transaction_type | title }}</td>
+                    <td>{{ transaction.transaction_date }}</td>
+                    <td>
+                        <!-- Delete icon with a link to delete the transaction -->
+                        <a href="{% url 'delete_transaction' transaction.pk %}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
